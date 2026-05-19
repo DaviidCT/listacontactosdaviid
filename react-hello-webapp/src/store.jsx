@@ -63,6 +63,7 @@ const injectContext = (PassedComponent) => {
                     }
                     return false;
                 },
+
                 borrarContacto: async (id) => {
                     try {
                         const response = await fetch(`https://playground.4geeks.com/contact/agendas/david_agenda/contacts/${id}`, {
@@ -74,6 +75,24 @@ const injectContext = (PassedComponent) => {
                     } catch (error) {
                         console.error("Error al borrar:", error);
                     }
+                },
+                editarContacto: async (id, contactoActualizado) => {
+                    try {
+                        const response = await fetch(`https://playground.4geeks.com/contact/agendas/david_agenda/contacts/${id}`, {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(contactoActualizado)
+                        });
+
+                        if (response.ok) {
+                            console.log("Contacto editado con éxito!");
+                            await state.actions.obtenerContactos();
+                            return true;
+                        }
+                    } catch (error) {
+                        console.error("Error en la petición PUT:", error);
+                    }
+                    return false;
                 }
             }
         });

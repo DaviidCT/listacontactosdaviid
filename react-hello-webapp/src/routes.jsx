@@ -9,6 +9,7 @@ const AppRoutes = () => {
             <Routes>
                 <Route path="/" element={<Contact />} />
                 <Route path="/add-contact" element={<AddContact />} />
+                <Route path="/edit-contact/:id" element={<AddContact />} />         
                 <Route path="*" element={<h1>Not found!</h1>} />
             </Routes>
         </BrowserRouter>

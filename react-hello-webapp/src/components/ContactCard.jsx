@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store.jsx";
 import Modal from "./Modal.jsx";
 
@@ -33,7 +34,10 @@ const ContactCard = ({ contacto }) => {
                     </div>
                 </div>
                 <div className="col-md-3 d-flex justify-content-end align-items-center pe-4">
-                    <button className="btn btn-link text-dark me-3"><i className="fas fa-pencil-alt"></i></button>
+                    <Link to={`/edit-contact/${contacto.id}`} className="btn btn-link text-dark me-3">
+                        <i className="fas fa-pencil-alt"></i>
+                    </Link>
+
                     <button className="btn btn-link text-dark" onClick={() => setState({ showModal: true })}>
                         <i className="fas fa-trash-alt"></i>
                     </button>
